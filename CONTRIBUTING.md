@@ -15,8 +15,8 @@ npm run dev
 ```
 
 ## Communication
-- Slack équipe : #anilaye-tech
-- Documentation : Notion > Espace "Tech & Produits"
+- Slack équipe : #groupe-29
+/*- Documentation : Notion > Espace "Tech & Produits" */
 
 ---
 
@@ -34,6 +34,6 @@ npm run dev
 ```
 
 ## Communication
-- Team Slack: #anilaye-tech
-- Docs: Notion > "Tech & Product" space
+- Team Slack: #groupe-29
+/*- Docs: Notion > "Tech & Product" space */
 */
