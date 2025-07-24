@@ -2,7 +2,6 @@
 
 # Anilaye'O - Tableau de bord
 
-**FR 🇫🇷**
 Ce projet vise à proposer un tableau de bord moderne pour suivre l'activité des points d'eau distribués par Anilaye’O : volume d’eau consommé, nombre d’utilisateurs actifs, suivi des filtres et des capteurs IoT.
 
 ## Technologies utilisées
@@ -24,7 +23,6 @@ npm run dev
 
 ---
 
-**EN 🇬🇧**
 This dashboard project aims to visualize real-time water usage data from Anilaye’O’s community water points, including liters distributed, active users, and filter/capacity status.
 
 ## Stack
