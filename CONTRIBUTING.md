@@ -1,4 +1,3 @@
-/* CONTRIBUTING.md (FR + EN) */
 /*
 # Guide de contribution
 
