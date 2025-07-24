@@ -1,4 +1,3 @@
-/*
 # Guide de contribution
 
 ## Conventions
