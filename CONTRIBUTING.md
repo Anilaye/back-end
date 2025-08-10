@@ -31,8 +31,3 @@ cd back-end
 npm install
 npm run dev
 ```
-
-## Communication
-- Team Slack: #groupe-29
-/*- Docs: Notion > "Tech & Product" space */
-*/
