@@ -1,6 +1,7 @@
 {
   "name": "anilaye-backend",
   "version": "1.0.0",
+  "type": "module",
   "description": "Ce projet vise à proposer un tableau de bord moderne pour suivre l'activité des points d'eau distribués par Anilaye’O : volume d’eau consommé, suivi des filtres et des capteurs IoT.",
   "main": "index.js",
   "scripts": {
@@ -11,9 +12,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

@@ -1,30 +1,16 @@
-const User = require("../models/userModel");
+import { getAllUsers, getUserById, deleteUser } from "../models/userModel.js";
 
-exports.getUsers = (req, res) => {
-  res.json({ success: true, data: User.getAll() });
-};
+export function listUsers(req, res) {
+  res.json(getAllUsers());
+}
 
-exports.getUser = (req, res) => {
-  const user = User.getById(parseInt(req.params.id));
-  if (!user) return res.status(404).json({ success: false, message: "Utilisateur introuvable" });
-  res.json({ success: true, data: user });
-};
+export function getUser(req, res) {
+  const user = getUserById(Number(req.params.id));
+  if (!user) return res.status(404).json({ message: "Utilisateur non trouvé" });
+  res.json(user);
+}
 
-exports.createUser = (req, res) => {
-  const { name, role } = req.body;
-  if (!name || !role) return res.status(400).json({ success: false, message: "Nom et rôle requis" });
-  const newUser = User.add({ name, role });
-  res.status(201).json({ success: true, data: newUser });
-};
-
-exports.updateUserRole = (req, res) => {
-  const { role } = req.body;
-  const updated = User.updateRole(parseInt(req.params.id), role);
-  if (!updated) return res.status(404).json({ success: false, message: "Utilisateur introuvable" });
-  res.json({ success: true, data: updated });
-};
-
-exports.deleteUser = (req, res) => {
-  User.delete(parseInt(req.params.id));
-  res.json({ success: true, message: "Utilisateur supprimé" });
-};
+export function removeUser(req, res) {
+  deleteUser(Number(req.params.id));
+  res.json({ message: "Utilisateur supprimé" });
+}
