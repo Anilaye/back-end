@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+#  app:
+#    build: .
+#    container_name: water_dispenser_app
+#    ports:
+#      - "3001:3001"
+#    environment:
+#      - DB_HOST=db
+#      - DB_PORT=5432
+#      - DB_USER=postgres
+#      - DB_PASSWORD=postgres
+#      - DB_NAME=waterdb
+#    depends_on:
+#      - db
+
+  db:
+    image: postgres:15
+    container_name: water_dispenser_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: waterdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
