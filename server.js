@@ -6,6 +6,7 @@ import authRoutes from "./src/routes/authRoutes.js";
 import userRoutes from "./src/routes/userRoutes.js";
 import distributorRoutes from "./src/routes/distributorRoutes.js";
 import sequelize from "./src/config/db.js";
+import {setupSwagger} from "./src/config/swagger.js";
 
 dotenv.config();
 const app = express();
@@ -16,12 +17,12 @@ app.use(express.json());
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/api/distributors", distributorRoutes);
-
+// Swagger
+setupSwagger(app);
 
 app.get("/", (req, res) => res.send("API Anilaye"));
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => console.log(`Backend démarré sur http://localhost:${PORT}`));
 (async () => {
     try {
         await sequelize.authenticate();
