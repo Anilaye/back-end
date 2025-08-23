@@ -1,9 +1,9 @@
-import express from "express";
+import { Router } from "express";
 import { listUsers, getUser, removeUser } from "../controllers/userController.js";
 import { authenticateToken } from "../middlewares/authMiddleware.js";
 import { authorizeRoles } from "../middlewares/roleMiddleware.js";
 
-const router = express.Router();
+const router = Router();
 
 router.get("/", authenticateToken, authorizeRoles("admin"), listUsers);
 router.get("/:id", authenticateToken, getUser);
