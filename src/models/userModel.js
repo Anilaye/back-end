@@ -16,7 +16,7 @@ export async function insertUser({ email, passwordHash, role }) {
     .from("users")
     .insert([{ email, password: passwordHash, role, name }])
     .select();
-  if (error) throw error;
+    if (error) throw error;
   return data[0];
 }
 
