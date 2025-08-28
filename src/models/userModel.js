@@ -11,10 +11,10 @@ import { supabase } from "../config/supabaseClient.js";
 //   }
 // ];
 
-export async function insertUser({ email, passwordHash, role }) {
+export async function insertUser({ email, passwordHash, role = "admin", nom, prenom }) {
   const { data, error } = await supabase
     .from("users")
-    .insert([{ email, password: passwordHash, role, name }])
+    .insert([{ email, password: passwordHash, role, nom, prenom }])
     .select();
     if (error) throw error;
   return data[0];

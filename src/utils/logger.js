@@ -22,7 +22,8 @@ export const httpLogger = morgan("combined", {
 function writeLog(level, message) {
   const log = `[${level}] ${new Date().toISOString()} - ${message}\n`;
   fs.appendFileSync(logFile, log, "utf8");
-  console.log(log.trim());
+  (level === "ERROR" ? console.error : console.log(log.trim()));
+  
 }
 
 // Export unique des fonctions de log

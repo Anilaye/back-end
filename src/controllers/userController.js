@@ -8,8 +8,8 @@ import {
 
 export async function createUserController(req, res) {
   try {
-    const { email, password, role, name } = req.body;
-    const user = await createUser({ email, password, role, name });
+    const { email, password, role, nom, prenom } = req.body;
+    const user = await createUser({ email, password, role, nom, prenom });
     res.status(201).json({ user });
   } catch (error) {
     res.status(400).json({ error: error.message });

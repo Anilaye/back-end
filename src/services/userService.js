@@ -3,10 +3,10 @@ import { logInfo, logError } from "../utils/logger.js";
 import { insertUser, findAllUsers, findUserById, removeUserById } from "../models/userModel.js";
 
 
-export async function createUser({ email, password, role, name }) {
+export async function createUser({ email, password, role = "admin", nom, prenom }) {
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await insertUser({ email, passwordHash: hashedPassword, role, name });
+    const user = await insertUser({ email, passwordHash: hashedPassword, role, nom, prenom });
     logInfo(`Utilisateur créé: ${user.id}`);
     return user;
   } catch (error) {
