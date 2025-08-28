@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { logError, logInfo } from "../utils/logger.js";
 import { supabase } from "../config/supabaseClient.js";
 
-export async function registerUser({ email, password, role, name }) {
+export async function registerUser({ email, password, role, nom, prenom }) {
   try {
     // Vérifier si l'utilisateur existe déjà
     const { data: existing, error: findError } = await supabase
@@ -27,15 +27,15 @@ export async function registerUser({ email, password, role, name }) {
     // Création utilisateur dans Supabase
     const { data: created, error: insertError } = await supabase
       .from("users")
-      .insert([{ email, password: passwordHash, role }])
+      .insert([{ email, password: passwordHash, role, nom, prenom }])
       .select()
       .single();
 
     if (insertError) throw insertError;
 
-    logInfo("Utilisateur enregistré", { id: created.id, email: created.email, role: created.role });
+    logInfo("Utilisateur enregistré", { id: created.id, email: created.email, role: created.role, nom: created.nom, prenom: created.prenom });
 
-    return { id: created.id, email: created.email, role: created.role };
+    return { id: created.id, email: created.email, role: created.role, nom: created.nom, prenom: created.prenom };
   } catch (error) {
     logError("Erreur lors de l'inscription", { error: error.message, email });
     throw error;
@@ -65,14 +65,14 @@ export async function loginUser({ email, password }) {
 
     // Générer un token JWT
     const token = jwt.sign(
-      { id: user.id, role: user.role, email: user.email },
+      { id: user.id, role: user.role, email: user.email, nom: user.nom, prenom: user.prenom },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
 
-    logInfo("Utilisateur connecté", { id: user.id, email: user.email, role: user.role });
+    logInfo("Utilisateur connecté", { id: user.id, email: user.email, role: user.role, nom: user.nom, prenom: user.prenom });
 
-    return { token, user: { id: user.id, email: user.email, role: user.role } };
+    return { token, user: { id: user.id, email: user.email, role: user.role, nom: user.nom, prenom: user.prenom } };
   } catch (error) {
     logError("Erreur lors de la connexion", { error: error.message, email });
     throw error;
